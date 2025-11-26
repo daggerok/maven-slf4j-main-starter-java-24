@@ -8,7 +8,7 @@ on:
         required: false
         default: ''
 env:
-  JAVA_VERSION: '21'
+  JAVA_VERSION: '24'
   JAVA_ZULU_DISTRIBUTION: 'zulu'
   JAVA_GRAALVM_DISTRIBUTION: 'graalvm'
 jobs:
