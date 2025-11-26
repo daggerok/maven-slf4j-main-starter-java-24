@@ -54,6 +54,33 @@ jobs:
           distribution: ${{ env.JAVA_ZULU_DISTRIBUTION }}
       - run: ./mvnw clean --no-transfer-progress ; ./mvnw --no-transfer-progress
       - run: java -jar target/*.jar
+  degit-zulu-24-tests:
+    if: github.event.inputs.trigger == ''
+      || !startsWith(github.event.inputs.trigger, 'm')
+      || !startsWith(github.event.inputs.trigger, 'M')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        id: java-cache
+        with:
+          path: |
+            ~/.m2/repository
+            !~/.m2/repository/io/github/daggerok
+          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml', '**/.mvn/**', '**/mvnw*') }}
+      - uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: ${{ env.JAVA_ZULU_DISTRIBUTION }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 'lts/*'
+      - run: |
+          cd /tmp
+          npx --yes degit daggerok/maven-slf4j-main-starter-java-24 my-app && cd $_
+          ./mvnw clean --no-transfer-progress
+          ./mvnw --no-transfer-progress
+          java -jar target/*.jar
   mvn-versions-display-updates:
     if: github.event.inputs.trigger == ''
       || !startsWith(github.event.inputs.trigger, 'm')
