@@ -1,4 +1,4 @@
-# maven-slf4j-main-starter [![ci](https://github.com/daggerok/maven-slf4j-main-starter-java-21/actions/workflows/ci.yml/badge.svg)](https://github.com/daggerok/maven-slf4j-main-starter-java-21/actions/workflows/ci.yml)
+# maven-slf4j-main-starter [![ci](https://github.com/daggerok/maven-slf4j-main-starter-java-24/actions/workflows/ci.yml/badge.svg)](https://github.com/daggerok/maven-slf4j-main-starter-java-24/actions/workflows/ci.yml)
 Maven application project starter using maven wrapper, slf4j, assertj and java 24 (tested on Zulu and GraalVM)
 
 ## Getting Started
@@ -6,7 +6,7 @@ Maven application project starter using maven wrapper, slf4j, assertj and java 2
 Create a new project
 
 ```bash
-npx --yes degit daggerok/maven-slf4j-main-starter-java-21 my-app && cd $_
+npx --yes degit daggerok/maven-slf4j-main-starter-java-24 my-app && cd $_
 ```
 
 ## Setup Development Environment
@@ -14,7 +14,7 @@ npx --yes degit daggerok/maven-slf4j-main-starter-java-21 my-app && cd $_
 Install Java 24
 
 ```bash
-brew reinstall zulu@24 # graalvm or graalvm@21
+brew reinstall zulu@24 # graalvm
 
 declare -f use # output:
 function use() {
